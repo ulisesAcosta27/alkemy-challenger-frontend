@@ -2,8 +2,21 @@ import React from 'react'
 import { Box, Button, Text } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
-const SummaryOperations = () => {
+const SummaryOperations = ({ apiBudgets }) => {
   const navigate = useNavigate()
+  let addArray = [],
+    subtractArray = [];
+
+  apiBudgets.filter(item => {
+    if(item.type === 'egreso')
+      return addArray = [...addArray, item.quantity]
+    if(item.type === 'ingreso')
+      return subtractArray = [...subtractArray, item.quantity]
+  })
+  let addResult = addArray.reduce((a, b) => a + b, 0)
+  let subtractResult =subtractArray.reduce((a, b) => a + b, 0)
+  let resultOp = addResult - subtractResult
+
   return (
     <Box 
       w={['100%', '90%', '90%', '80%']} 
@@ -19,7 +32,7 @@ const SummaryOperations = () => {
         Summary of Operations
       </Text>
       <Text fontSize='3xl' fontWeight='semibold' py='1rem'>
-        $10.000
+        ${ resultOp.toLocaleString() }
       </Text>
       
       <Box p='.5rem'>
