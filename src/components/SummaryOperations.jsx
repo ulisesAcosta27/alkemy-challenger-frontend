@@ -8,9 +8,9 @@ const SummaryOperations = ({ apiBudgets }) => {
     subtractArray = [];
 
   apiBudgets.filter(item => {
-    if(item.type === 'egreso')
+    if(item.type === 'egress')
       return addArray = [...addArray, item.quantity]
-    if(item.type === 'ingreso')
+    if(item.type === 'incomes')
       return subtractArray = [...subtractArray, item.quantity]
   })
   let addResult = addArray.reduce((a, b) => a + b, 0)
