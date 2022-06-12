@@ -1,11 +1,19 @@
 import React from "react";
 import { Box, Button, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import axios from 'axios'
 
 const Cards = ({ item }) => {
-  const handleDelete = (id) => {
-    const [deleteItem] = item.filter((e) => e.id === id);
-    console.log(deleteItem);
+
+  const handleDelete = async (id) => {
+    try {
+      // await axios.delete(`https://alkemy-challenger-backend.vercel.app/budgets/${id}`)
+      // setTasks(tasks.filter((task) => task.id !== id));
+      console.log(id)
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <>
       {item.map((e) => (
