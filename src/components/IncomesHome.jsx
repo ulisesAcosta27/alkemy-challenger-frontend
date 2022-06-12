@@ -35,7 +35,16 @@ const IncomesHome = () => {
             <Text fontSize="xl" p=".5rem">
               Incomes Operations
             </Text>
-            <Cards item={apiBudgetsIncomes} />
+            <Box
+              w="100%"
+              h="auto"
+              py="2rem"
+              display="flex"
+              flexWrap="wrap"
+              justifyContent="space-evenly"
+            >
+              <Cards item={apiBudgetsIncomes} setApiBudgetsIncomes={setApiBudgetsIncomes}/>
+            </Box>
           </>
         )}
       </Box>

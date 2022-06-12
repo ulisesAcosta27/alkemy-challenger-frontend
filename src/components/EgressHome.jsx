@@ -35,7 +35,16 @@ const EgressHome = () => {
             <Text fontSize="xl" p=".5rem">
               Egress Operations
             </Text>
-            <Cards item={apiBudgetsEgress} />
+            <Box
+              w="100%"
+              h="auto"
+              py="2rem"
+              display="flex"
+              flexWrap="wrap"
+              justifyContent="space-evenly"
+            >
+              <Cards item={apiBudgetsEgress} setApiBudgetsEgress={setApiBudgetsEgress}/>
+            </Box>
           </>
         )}
       </Box>
