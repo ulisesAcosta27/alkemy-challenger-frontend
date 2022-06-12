@@ -1,11 +1,21 @@
 import React from "react";
 import { Box, Button, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Cards = ({ item }) => {
-  const handleDelete = (id) => {
-    const [deleteItem] = item.filter((e) => e.id === id);
-    console.log(deleteItem);
+const Cards = ({ item, setApiBudgets }) => {
+  const navigate = useNavigate();
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(
+        `https://alkemy-challenger-backend.vercel.app/budgets/${id}`
+      );
+      setApiBudgets(item.filter((task) => task.id !== id));
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <>
       {item.map((e) => (
@@ -39,7 +49,14 @@ const Cards = ({ item }) => {
             >
               Delete
             </Button>
-            <Button colorScheme="teal" size="md" mx=".3rem">
+            <Button
+              colorScheme="teal"
+              size="md"
+              mx=".3rem"
+              onClick={() => {
+                navigate(`/form/${e.id}/edit`);
+              }}
+            >
               Updates
             </Button>
           </Box>
