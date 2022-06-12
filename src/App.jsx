@@ -15,6 +15,7 @@ function App() {
         <Route path='/incomes' element={<Incomes />} />
         <Route path='/egress' element={<Egress />} />
         <Route path='/form' element={<Form />} />
+        <Route path='/form/:id/edit' element={<Form />} />
         <Route path='/signup' element={<Signup />} />
       </Routes>
     </Router>
